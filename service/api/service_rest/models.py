@@ -34,11 +34,9 @@ class Appointment(models.Model):
         return reverse('api_show_appointment', kwargs={'id': self.id})
 
     def cancel(self):
-        status = Appointment.objects.get(status="CANCELLED")
-        self.status = status
+        self.status = "CANCELLED"
         self.save()
 
     def finish(self):
-        status = Appointment.objects.get(status="FINISHED")
-        self.status = status
+        self.status = "FINISHED"
         self.save()

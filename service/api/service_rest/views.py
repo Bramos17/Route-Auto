@@ -122,3 +122,37 @@ def api_show_appointment(request, id):
         return JsonResponse(
             {'deleted': count > 0},
         )
+
+
+@require_http_methods(["PUT"])
+def api_cancel_status(request, id):
+    try:
+        appointment = Appointment.objects.get(id=id)
+        appointment.cancel()
+        return JsonResponse(
+            appointment,
+            encoder=AppointmentDetailEncoder,
+            safe=False,
+        )
+    except Appointment.DoesNotExist:
+        return JsonResponse(
+            {'message': 'Appointment does not exist'},
+            status=400,
+        )
+
+
+@require_http_methods(["PUT"])
+def api_finish_status(request, id):
+    try:
+        appointment = Appointment.objects.get(id=id)
+        appointment.finish()
+        return JsonResponse(
+            appointment,
+            encoder=AppointmentDetailEncoder,
+            safe=False,
+        )
+    except Appointment.DoesNotExist:
+        return JsonResponse(
+            {'message': 'Appointment does not exist'},
+            status=400,
+        )
