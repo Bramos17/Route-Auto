@@ -12,7 +12,7 @@ class AutomobileVO(models.Model):
 class Technician(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
-    employee_id = models.CharField(max_length=100)
+    employee_id = models.PositiveIntegerField()
 
     def get_api_url(self):
         return reverse('api_show_technician', kwargs={'id': self.id})
@@ -21,7 +21,7 @@ class Technician(models.Model):
 class Appointment(models.Model):
     date_time = models.DateTimeField(auto_now_add=True)
     reason = models.CharField(max_length=300)
-    status = models.CharField(max_length=20, default="CREATED")
+    status = models.CharField(max_length=20, default="created")
     vin = models.CharField(max_length=17, unique=True)
     customer = models.CharField(max_length=100)
     technician = models.ForeignKey(
@@ -34,9 +34,9 @@ class Appointment(models.Model):
         return reverse('api_show_appointment', kwargs={'id': self.id})
 
     def cancel(self):
-        self.status = "CANCELLED"
+        self.status = "canceled"
         self.save()
 
     def finish(self):
-        self.status = "FINISHED"
+        self.status = "finished"
         self.save()

@@ -97,7 +97,8 @@ def api_show_technician(request, id):
         try:
             count, _ = Technician.objects.filter(id=id).delete()
             return JsonResponse(
-                {'deleted': count > 0}
+                {'deleted': count > 0},
+                status=200,
             )
         except Technician.DoesNotExist:
             return JsonResponse(
@@ -158,6 +159,7 @@ def api_show_appointment(request, id):
             count, _ = Appointment.objects.filter(id=id).delete()
             return JsonResponse(
                 {'deleted': count > 0},
+                status=200,
             )
         except Appointment.DoesNotExist:
             return JsonResponse(
