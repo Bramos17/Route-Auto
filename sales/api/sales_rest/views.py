@@ -77,7 +77,7 @@ def api_customers(request):
     if request.method == "GET":
         customers = SalesCustomer.objects.all()
         return JsonResponse(
-            {'Customers': customers},
+            {"customers": customers},
             encoder=SalesCustomerEncoder,
         )
     else:
@@ -85,9 +85,10 @@ def api_customers(request):
         customer = SalesCustomer.objects.create(**content)
         return JsonResponse(
             customer,
-            encoder=SalesPersonEncoder,
-            safe=False
+            encoder=SalesCustomerEncoder,
+            safe=False,
         )
+
 
 
 @require_http_methods(["GET", "PUT", "DELETE"])
