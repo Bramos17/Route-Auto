@@ -17,7 +17,7 @@ def poll(repeat=True):
         print('Service poller polling for data')
         try:
             response = requests.get(
-                'http://project-beta-inventory-api-1:8000/api/automobiles/'
+                'http://project-beta-inventory-api-1:8000/api/automobiles'
             )
             content = json.loads(response.content)
             for automobile in content['autos']:

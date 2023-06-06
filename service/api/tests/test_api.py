@@ -79,7 +79,7 @@ class Tests(TransactionTestCase):
         response = client.delete(f"/api/appointments/{appointment.id}")
         self.assertEqual(response.status_code, 200, msg="Did not get a 200 OK for appointment delete.")
 
-        response = client.delete(f"/api/appointments/{appointment.id}")
+        response = client.delete(f"/api/appointments/{appointment.id}/")
         self.assertTrue(response.status_code == 404 or response.status_code == 400, msg="Did not get a 400 delete an unknown appointment.")
 
     def test_appointment_cancel(self):
