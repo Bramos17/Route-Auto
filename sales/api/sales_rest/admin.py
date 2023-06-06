@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AutomobileVO, SalesPerson, Customer, Sales
+from .models import AutomobileVO, SalesPerson, SalesCustomer, Sales
 
 
 @admin.register(AutomobileVO)
@@ -12,8 +12,8 @@ class SalesPersonAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Customer)
-class CustomerAdmin(admin.ModelAdmin):
+@admin.register(SalesCustomer)
+class SalesCustomerAdmin(admin.ModelAdmin):
     pass
 
 

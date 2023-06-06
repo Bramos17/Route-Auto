@@ -22,7 +22,7 @@ class SalesPerson(models.Model):
         return reverse("api_show_salesperson", kwargs={"id": self.id})
 
 
-class Customer(models.Model):
+class SalesCustomer(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     address = models.CharField(max_length=50)

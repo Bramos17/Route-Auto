@@ -1,8 +1,8 @@
 from django.views.decorators.http import require_http_methods
 import json
 from django.http import JsonResponse
-from .encoders import SalesPersonEncoder, CustomerEncoder, SalesEncoder
-from .models import AutomobileVO, SalesPerson, Customer, Sales
+from .encoders import SalesPersonEncoder, SalesCustomerEncoder, SalesEncoder
+from .models import AutomobileVO, SalesPerson, SalesCustomer, Sales
 
 
 @require_http_methods(["GET", "POST"])
@@ -75,14 +75,14 @@ def api_salesperson(request, id):
 @require_http_methods(["GET", "POST"])
 def api_customers(request):
     if request.method == "GET":
-        Customers = Customer .objects.all()
+        customers = SalesCustomer.objects.all()
         return JsonResponse(
-            {'Customers': Customers},
-            encoder=SalesPersonEncoder,
+            {'Customers': customers},
+            encoder=SalesCustomerEncoder,
         )
     else:
         content = json.loads(request.body)
-        customer = Customers.objects.create(**content)
+        customer = SalesCustomer.objects.create(**content)
         return JsonResponse(
             customer,
             encoder=SalesPersonEncoder,
@@ -94,20 +94,20 @@ def api_customers(request):
 def api_customer(request, id):
     if request.method == "GET":
         try:
-            customer = Customer.objects.get(id=id)
+            customer = SalesCustomer.objects.get(id=id)
             return JsonResponse(
                 customer,
-                encoder=CustomerEncoder,
+                encoder=SalesCustomerEncoder,
                 safe=False
             )
-        except Customer.DoesNotExist:
-            responce = JsonResponse({'error': 'Customer not found'})
+        except SalesCustomer.DoesNotExist:
+            responce = JsonResponse({'error': 'SalesCustomer not found'})
             responce.status_code = 404
             return responce
     elif request.method == "PUT":
         try:
             content = json.loads(request.body)
-            customer = Customer.objects.get(id=id)
+            customer = SalesCustomer.objects.get(id=id)
             customer.first_name = content["first_name"]
             customer.last_name = content["last_name"]
             customer.address = content["address"]
@@ -116,24 +116,24 @@ def api_customer(request, id):
             customer.save()
             return JsonResponse(
                 customer,
-                encoder=CustomerEncoder,
+                encoder=SalesCustomerEncoder,
                 safe=False
             )
-        except Customer.DoesNotExist:
-            responce = JsonResponse({'error': 'Customer not found'})
+        except SalesCustomer.DoesNotExist:
+            responce = JsonResponse({'error': 'SalesCustomer not found'})
             responce.status_code = 404
             return responce
     elif request.method == "DELETE":
         try:
-            customer = Customer.objects.get(id=id)
+            customer = SalesCustomer.objects.get(id=id)
             customer.delete()
             return JsonResponse(
                 customer,
-                encoder=CustomerEncoder,
+                encoder=SalesCustomerEncoder,
                 safe=False
             )
-        except Customer.DoesNotExist:
-            responce = JsonResponse({'error': 'Customer not found'})
+        except SalesCustomer.DoesNotExist:
+            responce = JsonResponse({'error': 'SalesCustomer not found'})
             responce.status_code = 404
             return responce
 
@@ -149,26 +149,28 @@ def api_sales(request, employee_id=None):
             return JsonResponse(
                 {"records": records},
                 encoder=SalesEncoder
-                )
+            )
     else:
         try:
             content = json.loads(request.body)
             vin_num = content["automobile"]
             employee_id = content["SalesPerson"]
-            customer_id = content["Customer"]
+            customer_id = content["SalesCustomer"]
 
             content["automobile"] = AutomobileVO.objects.get(vin_num=vin_num)
             content["SalesPerson"] = SalesPerson.objects.get(
                 sales_person=employee_id
                 )
-            content["Customer"] = Customer.objects.get(customer_id=customer_id)
+            content["SalesCustomer"] = SalesCustomer.objects.get(
+                customer_id=customer_id
+            )
 
             record = Sales.objects.create(**content)
             return JsonResponse(record, encoder=SalesEncoder, safe=False)
         except (
             AutomobileVO.DoesNotExist,
             SalesPerson.DoesNotExist,
-            Customer.DoesNotExist
+            SalesCustomer.DoesNotExist
         ):
             responce = JsonResponse({'error': 'Sales not found'})
             responce.status_code = 404
@@ -205,7 +207,7 @@ def api_sale(request, id):
                         )
                     setattr(sale, prop, sales_person)
                 elif prop == "customer":
-                    customer = Customer.objects.get(
+                    customer = SalesCustomer.objects.get(
                         customer_id=content["customer"]
                         )
                     setattr(sale, prop, customer)

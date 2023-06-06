@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
 
+
 class Tests(TestCase):
     def test_automobileVO(self):
         try:
@@ -9,18 +10,18 @@ class Tests(TestCase):
 
     def test_sale(self):
         try:
-            from sales_rest.models import Sale
+            from sales_rest.models import Sales
         except ModuleNotFoundError:
             self.fail("Could not find 'Sale Model'")
 
     def test_salesperson(self):
         try:
-            from sales_rest.models import Salesperson
+            from sales_rest.models import SalesPerson
         except ModuleNotFoundError:
             self.fail("Could not find 'Salesperson Model'")
 
     def test_customer(self):
         try:
-            from sales_rest.models import Customer
+            from sales_rest.models import SalesCustomer
         except ModuleNotFoundError:
-            self.fail("Could not find 'Customer Model'")
+            self.fail("Could not find 'SalesCustomer Model'")
