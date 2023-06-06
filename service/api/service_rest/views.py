@@ -1,51 +1,13 @@
-from .models import Appointment, AutomobileVO, Technician
-from common.json import ModelEncoder
 import json
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
-
-# Create your views here.
-
-
-class AutomobileVODetailEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = ['vin', 'sold']
-
-
-class TechnicianListEncoder(ModelEncoder):
-    model = Technician
-    properties = ['first_name', 'employee_id', 'id']
-
-
-class TechnicianDetailEncoder(ModelEncoder):
-    model = Technician
-    properties = [
-        'first_name',
-        'last_name',
-        'employee_id',
-        'id',
-    ]
-
-
-class AppointmentListEncoder(ModelEncoder):
-    model = Appointment
-    properties = ['customer', 'status']
-
-
-class AppointmentDetailEncoder(ModelEncoder):
-    model = Appointment
-    properties = [
-        'date_time',
-        'reason',
-        'status',
-        'vin',
-        'customer',
-        'technician',
-    ]
-
-    encoders = {
-        'technician': TechnicianListEncoder(),
-    }
+from .encoders import (
+    AppointmentDetailEncoder,
+    AppointmentListEncoder,
+    TechnicianDetailEncoder,
+    TechnicianListEncoder,
+)
+from .models import Appointment, Technician
 
 
 @require_http_methods(["GET", "POST"])
@@ -90,21 +52,15 @@ def api_show_technician(request, id):
             )
         except Technician.DoesNotExist:
             return JsonResponse(
-                {'message': 'Technician id is invalid'},
+                {'message': 'Invalid technician id'},
                 status=400,
             )
     else:
-        try:
-            count, _ = Technician.objects.filter(id=id).delete()
-            return JsonResponse(
-                {'deleted': count > 0},
-                status=200,
-            )
-        except Technician.DoesNotExist:
-            return JsonResponse(
-                {'message': 'Technician has already been deleted'},
-                status=400,
-            )
+        count, _ = Technician.objects.filter(id=id).delete()
+        return JsonResponse(
+            {'deleted': count > 0},
+            status=200,
+        )
 
 
 @require_http_methods(["GET", "POST"])
@@ -122,21 +78,27 @@ def api_list_appointment(request):
                 status=400,
             )
     else:
-        content = json.loads(request.body)
         try:
-            technician = Technician.objects.get(id=content['technician'])
-            content['technician'] = technician
-        except Technician.DoesNotExist:
+            content = json.loads(request.body)
+            try:
+                technician = Technician.objects.get(id=content['technician'])
+                content['technician'] = technician
+            except Technician.DoesNotExist:
+                return JsonResponse(
+                    {'message': 'Invalid technician'},
+                    status=400,
+                )
+            appointment = Appointment.objects.create(**content)
             return JsonResponse(
-                {'message': 'Invalid technician'},
+                appointment,
+                encoder=AppointmentDetailEncoder,
+                safe=False,
+            )
+        except TypeError:
+            return JsonResponse(
+                {'message': 'Invalid key name'},
                 status=400,
             )
-        appointment = Appointment.objects.create(**content)
-        return JsonResponse(
-            appointment,
-            encoder=AppointmentDetailEncoder,
-            safe=False,
-        )
 
 
 @require_http_methods(["GET", "DELETE"])
@@ -155,17 +117,11 @@ def api_show_appointment(request, id):
                 status=400,
             )
     else:
-        try:
-            count, _ = Appointment.objects.filter(id=id).delete()
-            return JsonResponse(
-                {'deleted': count > 0},
-                status=200,
-            )
-        except Appointment.DoesNotExist:
-            return JsonResponse(
-                {'message': 'Appointment has already been deleted'},
-                status=400,
-            )
+        count, _ = Appointment.objects.filter(id=id).delete()
+        return JsonResponse(
+            {'deleted': count > 0},
+            status=200,
+        )
 
 
 @require_http_methods(["PUT"])
@@ -180,7 +136,7 @@ def api_cancel_status(request, id):
         )
     except Appointment.DoesNotExist:
         return JsonResponse(
-            {'message': 'Appointment does not exist'},
+            {'message': 'Invalid appointment id'},
             status=400,
         )
 
@@ -197,6 +153,6 @@ def api_finish_status(request, id):
         )
     except Appointment.DoesNotExist:
         return JsonResponse(
-            {'message': 'Appointment does not exist'},
+            {'message': 'Invalid appointment id'},
             status=400,
         )
