@@ -146,24 +146,23 @@ def api_sales(request, employee_id=None):
             records = Sales.objects.filter(sales_person=sales_person)
         else:
             records = Sales.objects.all()
-            return JsonResponse(
-                {"records": records},
-                encoder=SalesEncoder
-            )
+            return JsonResponse({"records": records}, encoder=SalesEncoder)
     else:
         try:
             content = json.loads(request.body)
-            vin_num = content["automobile"]
+            vin = content["automobile"]
             employee_id = content["SalesPerson"]
             customer_id = content["SalesCustomer"]
 
-            content["automobile"] = AutomobileVO.objects.get(vin_num=vin_num)
-            content["SalesPerson"] = SalesPerson.objects.get(
-                sales_person=employee_id
+            content.update({
+                "automobile": AutomobileVO.objects.get(vin=vin),
+                "SalesPerson": SalesPerson.objects.get(
+                    sales_person=employee_id
+                ),
+                "SalesCustomer": SalesCustomer.objects.get(
+                    customer_id=customer_id
                 )
-            content["SalesCustomer"] = SalesCustomer.objects.get(
-                customer_id=customer_id
-            )
+            })
 
             record = Sales.objects.create(**content)
             return JsonResponse(record, encoder=SalesEncoder, safe=False)
@@ -172,9 +171,9 @@ def api_sales(request, employee_id=None):
             SalesPerson.DoesNotExist,
             SalesCustomer.DoesNotExist
         ):
-            responce = JsonResponse({'error': 'Sales not found'})
-            responce.status_code = 404
-            return responce
+            response = JsonResponse({'error': 'Sales not found'})
+            response.status_code = 404
+            return response
 
 
 @require_http_methods(["GET", "PUT", "DELETE"])
