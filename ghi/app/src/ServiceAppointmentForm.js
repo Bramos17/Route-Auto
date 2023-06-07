@@ -69,11 +69,11 @@ function ServiceAppointmentForm() {
                             <label htmlFor="customer">Customer</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input value={date} onChange={event => setDate(event.target.value)} placeholder="Date" required type="date" id="date" className="form-control" name="date_time" />
+                            <input value={date} onChange={event => setDate(event.target.value)} placeholder="Date" required type="date" id="date" className="form-control" name="date" />
                             <label htmlFor="date">Date</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input value={time} onChange={event => setTime(event.target.value)} placeholder="Time" required type="time" id="time" className="form-control" name="date_time" />
+                            <input value={time} onChange={event => setTime(event.target.value)} placeholder="Time" required type="time" id="time" className="form-control" name="time" />
                             <label htmlFor="time">Time</label>
                         </div>
                         <div className="mb-3">

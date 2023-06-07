@@ -17,6 +17,32 @@ function ServiceAppointmentList() {
         fetchData();
     }, []);
 
+    // const fetchUncanceledData = async() =>{
+    //     const url = "http://localhost:8080/api/appointments/";
+    //     const response = await fetch(url);
+
+    //     if (response.ok) {
+    //         const data = await response.json();
+    //         const filteredData = data.appointments.filter()
+    //         setAppointments(data.appointments);
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
+
+    // const handleCancel = async(id) => {
+    //     const appointmentUrl = `http://localhost:8080/api/appointments/${id}/cancel`;
+    //     const fetchConfig = {
+    //         method: "PUT",
+    //     };
+    //     const response = await fetch(appointmentUrl, fetchConfig);
+    //     if (response.ok) {
+
+    //     }
+    // }
+
     return (
         <>
         <h1>Service Appointments</h1>
@@ -35,15 +61,23 @@ function ServiceAppointmentList() {
             </thead>
             <tbody>
                 {appointments.map(appointment => {
+                    const dateTime = new Date(appointment.date_time);
+                    console.log(dateTime);
+                    const date = dateTime.toLocaleDateString();
+                    const time = dateTime.toLocaleTimeString();
                     return (
                         <tr key={appointment.href}>
                             <td>{appointment.vin}</td>
                             <td></td>
                             <td>{appointment.customer}</td>
-                            <td></td>
-                            <td></td>
+                            <td>{date}</td>
+                            <td>{time}</td>
                             <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
                             <td>{appointment.reason}</td>
+                            <td>
+                                <button type="button" className="btn btn-danger">Cancel</button>
+                                <button type="button" className="btn btn-success">Finish</button>
+                            </td>
                         </tr>
                     );
                 })}
