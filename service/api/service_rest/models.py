@@ -34,6 +34,9 @@ class Appointment(models.Model):
         on_delete=models.PROTECT,
     )
 
+    class Meta:
+        ordering = ("date_time", "status")
+
     def __str__(self):
         return self.customer
 
