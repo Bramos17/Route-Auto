@@ -31,8 +31,6 @@ function AutomobileList () {
             </thead>
             <tbody>
                 {automobiles.map(auto => {
-                    const isSold = auto.sold;
-
                     return (
                         <tr key={auto.id}>
                             <td>{auto.vin}</td>

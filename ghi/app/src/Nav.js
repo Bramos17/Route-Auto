@@ -27,8 +27,7 @@ function Nav() {
                 <NavLink className="dropdown-item" to="inventory/vehicle-model/new">Create A Vehicle Model</NavLink>
                 <div className="dropdown-menu" aria-labelledby="navbarInventoryDropdown"></div>Automobiles
                 <NavLink className="dropdown-item" to="inventory/automobiles">Automobiles</NavLink>
-                {/* <NavLink className="dropdown-item" to="services/appointment/new">Create A Service Appointment</NavLink>
-                <NavLink className="dropdown-item" to="services/history">Service History</NavLink> */}
+                <NavLink className="dropdown-item" to="inventory/automobile/new">Add An Automobile To Inventory</NavLink>
               </div>
             </li>
           </ul>
