@@ -90,7 +90,6 @@ def api_customers(request):
         )
 
 
-
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_customer(request, id):
     if request.method == "GET":
