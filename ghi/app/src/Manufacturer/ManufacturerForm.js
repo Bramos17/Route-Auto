@@ -1,33 +1,32 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 
-function ManufacturerForm(props) {
-    const [formData, setFormData] = useState({
-        name: "",
-    });
+const ManufacturerForm = (props) => {
+    const [formData, setFormData] = useState({ name: "" });
 
     const handleFormData = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        });
+        setFormData({ ...formData, [event.target.name]: event.target.value });
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        const response = await fetch("http://localhost:8090/api/manufacturers/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+        const url = 'http://localhost:8100/api/manufacturers/';
+        const fetchConfig = {
+            method: "post",
             body: JSON.stringify(formData),
-        });
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
 
+        const response = await fetch(url, fetchConfig);
         if (response.ok) {
-            props.history.push("/inventory/manufacturers");
+            setFormData({ name: "" });
         }
     };
+
+
+
 
     return (
         <div className="container mt-2">

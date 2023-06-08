@@ -1,47 +1,50 @@
 import React, { useState, useEffect } from 'react';
 
-function SalesHistory(props) {
+function SalesPersonHistory(props) {
     const [records, setRecords] = useState([]);
-    const [employees, setEmployees] = useState([]);
-    const [salesPersonId, setSalesPersonId] = useState([]);
-
+    const [employees, setEmployee] = useState([]);
+    const [employeeID, setEmployeeID] = useState("");
 
     useEffect(() => {
-        async function fechemployeeData() {
-            const response = await fetch('http://localhost:8090/api/sales/staff/');
-            const data = await response.json();
-            setEmployees(data.employee);
-            setSalesPersonId(data.employee[0].id);
+        async function fetchemployeeData() {
+            const response = await fetch('http://localhost:8090/api/salespeople');
+            if (response.ok) {
+                const data = await response.json();
+                setEmployee(data.employee);
+                setEmployeeID(data.employee[0].id);
+            }
         }
-        fechemployeeData();
+        fetchemployeeData();
     }, []);
+
     const handleSalesPerson = (event) => {
-        setSalesPersonId(event.target.value);
+        setEmployeeID(event.target.value);
     };
 
     useEffect(() => {
         async function fetchRecordData() {
-            const response = await fetch(`http://localhost:8090/api/salespeple/${salesPersonId}/records/`);
+            const response = await fetch(`http://localhost:8090/api/salespeople/${employeeID}/`);
             if (response.ok) {
                 const data = await response.json();
                 setRecords(data.records);
             }
         }
-        // eslint-disable-next-line eqeqeq
-        if (salesPersonId =="") fetchRecordData();
-    }, [salesPersonId]);
+        if (employeeID !== "") fetchRecordData();
+    }, [employeeID]);
 
     return (
         <div className="container mt-2">
-            <h1>Sales Person history</h1>
+            <h1>Sales person history</h1>
             <div className="mb-3">
-                <select onChange={handleSalesPerson} value={salesPersonId} className="form-select" required id="vin" name="vin">
+            <select onChange={handleSalesPerson} className="form-select" required id="vin" name="vin" value={employeeID}>
                 {employees.map(employee => {
-                return (
-                    <option key={employee.id} value={employee.id}> {`${employee.employee_number} - ${employee.name}`} </option>
-                );
+                    return (
+                        <option key={employee.id} value={employee.id}>
+                            {`${employee.employee_number} - ${employee.name}`}
+                        </option>
+                    );
                 })}
-                </select>
+            </select>
             </div>
             <table className="table table-striped">
                 <thead>
@@ -71,4 +74,5 @@ function SalesHistory(props) {
         </div>
     );
 };
-export default SalesHistory;
+
+export default SalesPersonHistory;

@@ -23,16 +23,13 @@ function Nav() {
               </div>
             </li>
             <li className="nav-item dropdown">
-              <div className="nav-link dropdown-toggle" id="navbarAutomobileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Inventory </div>
-              <div className="dropdown-menu" aria-labelledby="navbarAutomobileDropdown"> Automobiles
-                <NavLink className="dropdown-item" to="inventory/automobiles">All Automobiles</NavLink>
-                <NavLink className="dropdown-item" to="inventory/automobiles/new">New Automobile</NavLink>
-                <div className="dropdown-divider"></div>Vehicle Manufacturers
-                <NavLink className="dropdown-item" to="inventory/manufacturers">Manufacturers</NavLink>
-                <NavLink className="dropdown-item" to="inventory/manufacturers/new">New Manufacture</NavLink>
+              <div className="nav-link dropdown-toggle" id="navbarInventoryDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Inventory </div>
+              <div className="dropdown-menu" aria-labelledby="navbarInventoryDropdown"> Inventory
+                <NavLink className="dropdown-item" to="Manufacturer/manufacturers">Manufacturers</NavLink>
+                <NavLink className="dropdown-item" to="Manufacturer/manufacturers/new">New Manufacture</NavLink>
                 <div className="dropdown-divider"></div>Vehicle Models
-                <NavLink className="dropdown-item" to="inventory/VehicleModels/new">New Models</NavLink>
-              </div>
+                <NavLink className="dropdown-item" to="Vehicle/VehicleModels/new">New Models</NavLink>
+                </div>
             </li>
           </ul>
         </div>
