@@ -40,17 +40,17 @@ class Sales(models.Model):
     automobile = models.ForeignKey(
         AutomobileVO,
         related_name="sales_record",
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         )
     salesperson = models.ForeignKey(
         "SalesPerson",
         related_name="sales_record",
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         )
     customer = models.ForeignKey(
         "SalesCustomer",
         related_name="sales_record",
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         )
     price = models.DecimalField(max_digits=10, decimal_places=2)
     sold_on_date = models.DateField(null=False)
