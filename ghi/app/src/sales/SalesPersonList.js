@@ -9,8 +9,10 @@ function SalespersonList() {
         const response = await fetch(Url);
         if (response.ok) {
             const data = await response.json();
-            setSalespeople(data.salespeople);
+            setSalespeople(data.salespersons);
+            console.log(data.salespersons);
         }
+        else { console.error(response) };
     };
 
     useEffect(() => { fetchSalespersonData(); }, []);
@@ -29,18 +31,20 @@ function SalespersonList() {
                     </tr>
                 </thead>
                 <tbody>
-                    {salespeople.map((person) => (
-                        <tr key={person.employee_id}>
-                            <td className="text-center">{person.first_name}</td>
-                            <td className="text-center">{person.last_name}</td>
-                            <td className="text-center">{person.employee_id}</td>
-                            <td className="text-center">
-                                <Link to={`/salespeople/edit/${person.id}/`} relative="path">
-                                    Edit
-                                </Link>
-                            </td>
-                        </tr>
-                    ))}
+                    {salespeople.map((person) => {
+                        return(
+                            <tr key={person.id}>
+                                <td className="text-center">{person.first_name}</td>
+                                <td className="text-center">{person.last_name}</td>
+                                <td className="text-center">{person.employee_id}</td>
+                                <td className="text-center">
+                                    <Link to={`/salespeople/edit/${person.id}/`} relative="path">
+                                        Edit
+                                    </Link>
+                                </td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
         </div>

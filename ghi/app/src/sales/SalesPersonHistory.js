@@ -1,46 +1,58 @@
 import React, { useState, useEffect } from 'react';
 
-function SalesPersonHistory(props) {
-    const [records, setRecords] = useState([]);
-    const [employees, setEmployee] = useState([]);
-    const [employeeID, setEmployeeID] = useState("");
+function SalesPersonHistory() {
+    const [sales, setSales] = useState([]);
+    const [salesperson, setSalesperson] = useState([]);
+    const [person, setPerson] = useState("");
+
+
 
     useEffect(() => {
-        async function fetchemployeeData() {
-            const response = await fetch('http://localhost:8090/api/salespeople');
+        async function fetchData() {
+            const response = await fetch('http://localhost:8090/api/sales/');
             if (response.ok) {
                 const data = await response.json();
-                setEmployee(data.employee);
-                setEmployeeID(data.employee[0].id);
+                setSales(data.sales);
             }
         }
-        fetchemployeeData();
+        fetchData();
     }, []);
 
-    const handleSalesPerson = (event) => {
-        setEmployeeID(event.target.value);
-    };
-
     useEffect(() => {
-        async function fetchRecordData() {
-            const response = await fetch(`http://localhost:8090/api/salespeople/${employeeID}/`);
+        async function fetchData() {
+            const response = await fetch('http://localhost:8090/api/salespeople/');
             if (response.ok) {
                 const data = await response.json();
-                setRecords(data.records);
+                setSalesperson(data.salespersons);
             }
         }
-        if (employeeID !== "") fetchRecordData();
-    }, [employeeID]);
+        fetchData();
+    }, []);
+    const handleperson = (event) => {
+
+        setPerson(event.target.value);
+    };
+
+    const getSalespersonName = (salesperson, sales) => {
+        if (!salesperson) {
+            return sales;
+        }
+        return sales.filter((sales) => sales.salesperson.id === salesperson);
+    };
+
+    const filteredSales = getSalespersonName(parseInt(person), sales);
+
 
     return (
         <div className="container mt-2">
             <h1>Sales person history</h1>
             <div className="mb-3">
-            <select onChange={handleSalesPerson} className="form-select" required id="vin" name="vin" value={employeeID}>
-                {employees.map(employee => {
+                <select onChange={handleperson} className="form-select" required id="vin" name="vin" value={person}>
+                <option value="">Choose a salesperson</option>
+                {salesperson.map(salesperson => {
                     return (
-                        <option key={employee.id} value={employee.id}>
-                            {`${employee.employee_number} - ${employee.name}`}
+                        <option key={salesperson.id} value={salesperson.id}>
+                            {salesperson.employee_id} - {salesperson.first_name}
                         </option>
                     );
                 })}
@@ -56,19 +68,17 @@ function SalesPersonHistory(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {records.map((record, index) => {
-                        const price = Number(record.price).toLocaleString(
-                            'en-US', { maximumFractionDigits: 2 }
-                        );
-                        return (
-                            <tr key={index}>
-                                <td>{record.sales_person.name}</td>
-                                <td>{record.customer.name}</td>
-                                <td>{record.automobile.vin}</td>
-                                <td>{`$${price}`}</td>
-                            </tr>
-                        );
-                    })}
+                    {filteredSales.map((sales) => {
+                            return (
+                                <tr key={sales.id}>
+                                    <td>{sales.salesperson.first_name}</td>
+                                    <td>{sales.customer.first_name} {sales.customer.last_name} </td>
+                                    <td>{sales.automobile.vin}</td>
+                                    <td>${sales.price}</td>
+                                </tr>
+                            );
+                        }
+                    )}
                 </tbody>
             </table>
         </div>

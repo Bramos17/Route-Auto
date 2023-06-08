@@ -3,14 +3,13 @@ import React, { useState, useEffect } from 'react';
 const SalesForm = (props) => {
     const [formData, setFormData] = useState({
         automobile: "",
-        sales_person: "",
+        salesperson: "",
         customer: "",
-        price: ""
+        price: "",
     });
     const [automobiles, setAutomobiles] = useState([]);
     const [employee, setemployee] = useState([]);
     const [customers, setCustomers] = useState([]);
-    const [vinsList, setVinsList] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -18,17 +17,15 @@ const SalesForm = (props) => {
                 'http://localhost:8100/api/automobiles/',
                 'http://localhost:8090/api/salespeople/',
                 'http://localhost:8090/api/customers/',
-                'http://localhost:8090/api/sales/'
             ];
             const requests = urls.map(url => fetch(url));
             const responses = await Promise.all(requests);
             responses.forEach(async response => {
                 if (response.ok) {
                     const data = await response.json();
-                    if (data.autos) setAutomobiles(data.autos);
-                    if (data.employee) setemployee(data.employee);
-                    if (data.customers) setCustomers(data.customers);
-                    if (data.records) setVinsList(data.records.map(record => record.automobile.vin));
+                    if (data.autos) { setAutomobiles(data.autos) };
+                    if (data.salespersons) { setemployee(data.salespersons) };
+                    if (data.customers) { setCustomers(data.customers) };
                 }
             });
         }
@@ -52,13 +49,13 @@ const SalesForm = (props) => {
 
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
-            setVinsList([...vinsList, formData.automobile]);
             setFormData({
                 automobile: "",
-                sales_person: "",
+                salesperson: "",
                 customer: "",
                 price: ""
             });
+            alert('Customer created successfully');
         }
     };
 
@@ -78,33 +75,30 @@ const SalesForm = (props) => {
                                     id="automobile"
                                     name="automobile"
                                 >
-                                    <option value="">Choose an automobile</option>
-                                    {automobiles
-                                        .filter(auto => !vinsList.includes(auto.vin))
-                                        .map(auto => {
-                                            return (
-                                                <option key={auto.id} value={auto.vin}>
-                                                    {`${auto.year} ${auto.model.manufacturer.name} ${auto.model.name} (${auto.vin})`}
-                                                </option>
-                                            );
-                                        })}
+                                    <option value="">Choose an automobile Vin</option>
+                                    {automobiles.map(automobile => {
+                                        return (
+                                            <option key={automobile.vin} value={automobile.vin}>{automobile.vin}</option>
+                                        )
+                                    })}
+
                                 </select>
                             </div>
 
                             <div className="mb-3">
                                 <select
                                     onChange={handleFormData}
-                                    value={formData.sales_person}
+                                    value={formData.salesperson}
                                     className="form-select"
                                     required
-                                    id="sales_person"
-                                    name="sales_person"
+                                    id="salesperson"
+                                    name="salesperson"
                                 >
                                     <option value="">Choose a sales person</option>
                                     {employee.map(salesPerson => {
                                         return (
                                             <option key={salesPerson.id} value={salesPerson.id}>
-                                                {salesPerson.name}
+                                                {salesPerson.first_name}
                                             </option>
                                         );
                                     })}
@@ -124,7 +118,7 @@ const SalesForm = (props) => {
                                     {customers.map(customer => {
                                         return (
                                             <option key={customer.id} value={customer.id}>
-                                                {customer.name}
+                                                {customer.first_name} {customer.last_name}
                                             </option>
                                         );
                                     })}

@@ -21,7 +21,7 @@ function CustomerForm(props) {
                 'Content-Type': 'application/json',
             },
         };
-        console.log(fetchConfig);
+
 
         const response = await fetch(Url, fetchConfig);
 

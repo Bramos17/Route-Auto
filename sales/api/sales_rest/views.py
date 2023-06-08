@@ -38,7 +38,7 @@ def api_show_salesperson(request, id):
             safe=False,
         )
     elif request.method == "DELETE":
-        count, _ = salesperson.objects.filter(id=id).delete()
+        count, _ = SalesPerson.objects.filter(id=id).delete()
         return JsonResponse(
             {'deleted': count > 0}
         )
@@ -99,7 +99,6 @@ def api_list_sales(request):
         return JsonResponse(
             {"sales": sales},
             encoder=SalesEncoder,
-            safe=False,
         )
     else:
         try:
@@ -143,7 +142,7 @@ def api_list_sales(request):
                 encoder=SalesEncoder,
                 safe=False,
             )
-        except:
+        except TypeError:
             return JsonResponse(
                 {"message": "Not viable input"},
                 status=400,
