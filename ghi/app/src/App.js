@@ -4,14 +4,14 @@ import MainPage from './MainPage';
 
 
 
-import SalesForm from './Sales/SalesForm';
-import SalesList from './Sales/SalesList';
-import SalesPersonList from './Sales/SalesPersonList';
-import SalesPersonHistory from './Sales/SalesPersonHistory';
-import CustomerForm from './Sales/CustomerForm';
-import CustomerList from './Sales/CustomerList';
-import EmployeeForm from './Sales/EmployeeForm';
-import RecordForm from './Sales/SalesForm';
+import SalesForm from './sales/SalesForm';
+import SalesList from './sales/SalesList';
+import SalesPersonList from './sales/SalesPersonList';
+import SalesPersonHistory from './sales/SalesPersonHistory';
+import CustomerForm from './sales/CustomerForm';
+import CustomerList from './sales/CustomerList';
+import EmployeeForm from './sales/EmployeeForm';
+import RecordForm from './sales/SalesForm';
 
 import ManufacturerList from './Manufacturer/ManufacturerList';
 import ManufacturerForm from './Manufacturer/ManufacturerForm';
