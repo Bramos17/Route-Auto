@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 
 
-function CustomerForm() {
+function CustomerForm(props) {
     const [formData, setFormData] = useState({
-        customer: '',
-        customerFirstName: '',
-        customerLastName: '',
-        customerAddress: '',
-        customerEmail: '',
-        customerPhone: '',
-        customerNote: '',
-        customerStatus: '',
+        first_name: '',
+        last_name: '',
+        address: '',
+        email: '',
+        phone_number: '',
     });
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const CustomerUrl = 'http://localhost:8090/api/customers/';
+        const Url = 'http://localhost:8090/api/customers/';
         const fetchConfig = {
             method: 'POST',
             body: JSON.stringify(formData),
@@ -26,17 +23,15 @@ function CustomerForm() {
         };
         console.log(fetchConfig);
 
-        const response = await fetch(CustomerUrl, fetchConfig);
+        const response = await fetch(Url, fetchConfig);
 
         if (response.ok) {
             setFormData({
-                customerFirstName: '',
-                customerLastName: '',
-                customerAddress: '',
-                customerEmail: '',
-                customerPhone: '',
-                customerNote: '',
-                customerStatus: '',
+                first_name: '',
+                last_name: '',
+                address: '',
+                email: '',
+                phone_number: '',
             });
             alert('Customer created successfully');
         }
@@ -60,34 +55,24 @@ function CustomerForm() {
                     <h5> Please fill out the Following </h5>
                     <form onSubmit={handleSubmit} id="create-location-form">
                         <div className="form-floating mb-3">
-                            <input onChange={handleFormChange} placeholder="First Name" required type="text" name="customerFirstName" id="customerFirstName" className="form-control" />
-                            <label htmlFor="customerFirstname">FirstName</label>
+                            <input onChange={handleFormChange} placeholder="First Name" required type="text" name="first_name" id="first_name" className="form-control" />
+                            <label htmlFor="first_name">First Name</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={handleFormChange} placeholder="Last Name" required type="text" name="customerLastName" id="customerLastName" className="form-control" />
-                            <label htmlFor="customerLastName">LastName</label>
+                            <input onChange={handleFormChange} placeholder="Last Name" required type="text" name="last_name" id="last_name" className="form-control" />
+                            <label htmlFor="last_name">Last Name</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={handleFormChange} placeholder="Address" required type="text" name="Address" id="Address" className="form-control" />
+                            <input onChange={handleFormChange} placeholder="Address" required type="text" name="address" id="address" className="form-control" />
                             <label htmlFor="address">Address</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={handleFormChange} placeholder="Email" required type="text" name="Email" id="Email" className="form-control" />
-                            <label htmlFor="Email">Email</label>
+                            <input onChange={handleFormChange} placeholder="Email" required type="text" name="email" id="email" className="form-control" />
+                            <label htmlFor="email">Email</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={handleFormChange} placeholder="PhoneNumber" required type="text" name="phone_number" id="phone_number" className="form-control" />
                             <label htmlFor="phone_number">Phone number</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <textarea onChange={handleFormChange} placeholder="Notes" required type="text" name="Notes" id="Notes" rows="3" className="form-control" />
-                            <label htmlFor="Notes">Notes</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <select onChange={handleFormChange} required id="location" className="form-select" name="location">
-                                <option value="Active">Active</option>
-                                <option value="Inactive">Inactive</option>
-                            </select>
                         </div>
                         <button className="btn btn-primary">Create</button>
                     </form>

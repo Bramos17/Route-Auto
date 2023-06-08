@@ -53,7 +53,7 @@ class Sales(models.Model):
         on_delete=models.PROTECT,
         )
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    sold_on_date = models.DateField()
+    sold_on_date = models.DateField(null=False)
 
     def __str__(self):
         return f"Sale of {self.vin} by {self.sales_person}"

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-function EmployeeForm() {
+function EmployeeForm(props) {
     const [formData, setFormData] = useState({
-        employeeFirstName: '',
-        employeeLastName: '',
+        first_name: '',
+        last_name: '',
         employee_id: '',
     });
 
@@ -23,8 +23,8 @@ function EmployeeForm() {
 
         if (response.ok) {
             setFormData({
-                employeeFirstName: '',
-                employeeLastName: '',
+                first_name: '',
+                last_name: '',
                 employee_id: '',
             });
             alert('Employee created successfully');
@@ -49,12 +49,12 @@ function EmployeeForm() {
                     <h5> Please fill out the Following </h5>
                     <form onSubmit={handleSubmit} id="create-location-form">
                         <div className="form-floating mb-3">
-                            <input onChange={handleFormChange} placeholder="First Name" required type="text" name="customerFirstName" id="customerFirstName" className="form-control" />
-                            <label htmlFor="customerFirstname">FirstName</label>
+                            <input onChange={handleFormChange} placeholder="First Name" required type="text" name="first_name" id="first_name" className="form-control" />
+                            <label htmlFor="first_name">FirstName</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={handleFormChange} placeholder="Last Name" required type="text" name="customerLastName" id="customerLastName" className="form-control" />
-                            <label htmlFor="customerLastName">LastName</label>
+                            <input onChange={handleFormChange} placeholder="Last Name" required type="text" name="last_name" id="last_name" className="form-control" />
+                            <label htmlFor="last_name">LastName</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={handleFormChange} placeholder="employee_id" required type="text" name="employee_id" id="employee_id" className="form-control" />

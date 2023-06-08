@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-function RecordList () {
+function SalesList (props) {
     const [records, setRecords] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('http://localhost:8090/api/sales/employee/');
+            const response = await fetch('http://localhost:8090/api/sales/');
             if (response.ok) {
                 const data = await response.json();
                 setRecords(data.records);
@@ -16,7 +16,7 @@ function RecordList () {
 
     return (
         <div className="container mt-2">
-            <h1>Sales records</h1>
+            <h1>Sales List</h1>
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -46,4 +46,4 @@ function RecordList () {
     );
 };
 
-export default RecordList;
+export default SalesList;

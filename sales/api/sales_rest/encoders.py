@@ -7,13 +7,28 @@ class AutomobileVOEncoder(ModelEncoder):
     properties = ["import_href", "vin"]
 
 
-class SalesPersonEncoder(ModelEncoder):
+class AutomobileVODetailEncoder(ModelEncoder):
+    model = AutomobileVO
+    properties = ['vin', 'sold']
+
+
+class SalesPersonListEncoder(ModelEncoder):
+    model = SalesPerson
+    properties = [
+        "first_name",
+        "employee_id",
+        "id"
+        ]
+
+
+class SalesPersonDetailEncoder(ModelEncoder):
     model = SalesPerson
     properties = [
         "first_name",
         "last_name",
-        "employee_id"
-        ]
+        "employee_id",
+        "id"
+    ]
 
 
 class SalesCustomerEncoder(ModelEncoder):
@@ -38,6 +53,6 @@ class SalesEncoder(ModelEncoder):
         ]
     encoders = {
         "automobile": AutomobileVOEncoder(),
-        "salesperson": SalesPersonEncoder(),
+        "salesperson": SalesPersonListEncoder(),
         "customer": SalesCustomerEncoder(),
         }

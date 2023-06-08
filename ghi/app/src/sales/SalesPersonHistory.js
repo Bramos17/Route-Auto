@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function RecordHistory() {
+function SalesHistory(props) {
     const [records, setRecords] = useState([]);
     const [employees, setEmployees] = useState([]);
     const [salesPersonId, setSalesPersonId] = useState([]);
@@ -8,7 +8,7 @@ function RecordHistory() {
 
     useEffect(() => {
         async function fechemployeeData() {
-            const response = await fetch('http://localhost:8080/employees');
+            const response = await fetch('http://localhost:8090/api/sales/staff/');
             const data = await response.json();
             setEmployees(data.employee);
             setSalesPersonId(data.employee[0].id);
@@ -21,7 +21,7 @@ function RecordHistory() {
 
     useEffect(() => {
         async function fetchRecordData() {
-            const response = await fetch(`http://localhost:8090/api/sales/staff/${salesPersonId}/records/`);
+            const response = await fetch(`http://localhost:8090/api/salespeple/${salesPersonId}/records/`);
             if (response.ok) {
                 const data = await response.json();
                 setRecords(data.records);
@@ -71,4 +71,4 @@ function RecordHistory() {
         </div>
     );
 };
-export default RecordHistory;
+export default SalesHistory;
