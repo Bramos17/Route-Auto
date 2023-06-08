@@ -39,7 +39,7 @@ function ServiceHistoryList() {
         <>
             <h1>Service History</h1>
             <div className="input-group rounded">
-                <input value={searchVIN} onChange={event => setSearchVIN(event.target.value)} onKeyDown={handleKeyDown} type="search" className="form-control rounded" placeholder="Search by VIN" aria-label="Search" aria-describedby="search-addon" />
+                <input value={searchVIN} onChange={event => setSearchVIN(event.target.value)} onKeyDown={handleKeyDown} type="text" className="form-control rounded" placeholder="Search by VIN" aria-label="Search" aria-describedby="search-addon" />
                 <button onClick={() => handleVINSearch(searchVIN)} type="button" className="btn btn-outline-secondary">Search</button>
             </div>
             <table className="table table-striped">
