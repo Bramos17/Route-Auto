@@ -6,10 +6,11 @@ from .encoders import (
         SalesPersonListEncoder,
         SalesPersonDetailEncoder,
         SalesEncoder,
+        SalesCustomerEncoder
     )
 
 
-@require_http_methods(["GET", "POST", "DELETE"])
+@require_http_methods(["GET", "POST"])
 def api_list_salespersons(request):
     if request.method == "GET":
         salespersons = SalesPerson.objects.all()
@@ -47,16 +48,11 @@ def api_show_salesperson(request, id):
 def api_list_customers(request):
     if request.method == 'GET':
         customers = SalesCustomer.objects.all()
-        customers_data = [
-            {
-                'first_name': customer.first_name,
-                'last_name': customer.last_name,
-                'address': customer.address,
-                'phone_number': customer.phone_number
-            }
-            for customer in customers
-        ]
-        return JsonResponse({'customers': customers_data}, safe=False)
+        return JsonResponse(
+            {'customers': customers},
+            encoder=SalesCustomerEncoder,
+            safe=False
+            )
     elif request.method == 'POST':
         content = json.loads(request.body)
         try:
@@ -64,6 +60,7 @@ def api_list_customers(request):
                 first_name=content['first_name'],
                 last_name=content['last_name'],
                 address=content['address'],
+                email=content['email'],
                 phone_number=content['phone_number']
             )
             customer_data = {
@@ -122,9 +119,9 @@ def api_list_sales(request):
                         id=content["salesperson"])
                     content["salesperson"] = salesperson
 
-                except SalesCustomer.DoesNotExist:
+                except SalesPerson.DoesNotExist:
                     return JsonResponse(
-                        {"message": "Customer not found"},
+                        {"message": "Salesperson not found"},
                         status=404,
                     )
             if "customer" in content:
@@ -134,15 +131,15 @@ def api_list_sales(request):
                     )
                     content["customer"] = customer
 
-                except SalesPerson.DoesNotExist:
+                except SalesCustomer.DoesNotExist:
                     return JsonResponse(
-                        {"message": "Salesperson not found"},
+                        {"message": "Customer not found"},
                         status=404,
                     )
 
             sale = Sales.objects.create(**content)
             return JsonResponse(
-                {"sale": sale},
+                sale,
                 encoder=SalesEncoder,
                 safe=False,
             )

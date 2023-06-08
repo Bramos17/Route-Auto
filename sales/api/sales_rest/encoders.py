@@ -38,7 +38,8 @@ class SalesCustomerEncoder(ModelEncoder):
         "last_name",
         "address",
         "email",
-        "phone_number"
+        "phone_number",
+        "id"
         ]
 
 
