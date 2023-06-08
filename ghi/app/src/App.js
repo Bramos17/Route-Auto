@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
-import TechnicianForm from './TechnicianForm';
-import TechnicianList from './TechnicianList';
-import ServiceAppointmentForm from './ServiceAppointmentForm';
-import ServiceAppointmentList from './ServiceAppointmentList';
-import ServiceHistoryList from './ServiceHistoryList';
-import VehicleModelForm from './VehicleModelForm';
-import AutomobileList from './AutomobileList';
-import AutomobileForm from './AutomobileForm';
+import TechnicianForm from './Service/TechnicianForm';
+import TechnicianList from './Service/TechnicianList';
+import ServiceAppointmentForm from './Service/ServiceAppointmentForm';
+import ServiceAppointmentList from './Service/ServiceAppointmentList';
+import ServiceHistoryList from './Service/ServiceHistoryList';
+import VehicleModelForm from './Inventory/VehicleModelForm';
+import AutomobileList from './Inventory/AutomobileList';
+import AutomobileForm from './Inventory/AutomobileForm';
 
 function App() {
   return (

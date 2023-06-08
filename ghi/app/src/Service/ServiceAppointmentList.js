@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-function ServiceHistoryList() {
+function ServiceAppointmentList() {
     const [appointments, setAppointments] = useState([]);
-    const [searchVIN, setSearchVIN] = useState("");
-
-    const url = "http://localhost:8080/api/appointments/";
 
     const fetchData = async () => {
+        const url = "http://localhost:8080/api/appointments/";
         const response = await fetch(url);
 
         if (response.ok) {
@@ -19,27 +17,46 @@ function ServiceHistoryList() {
         fetchData();
     }, []);
 
-    const handleVINSearch = async(vin) => {
+    const fetchFilteredData = async () => {
+        const url = "http://localhost:8080/api/appointments/";
         const response = await fetch(url);
 
         if (response.ok) {
             const data = await response.json();
-            const filteredData = data.appointments.filter(object => object["vin"] === vin);
-            if (vin === "") {
-                setAppointments(data.appointments)
-            } else {
-                setAppointments(filteredData);
-            }
+            const filteredData = data.appointments.filter(object => (object["status"] === "created"));
+            setAppointments(filteredData);
+        }
+    }
+
+    useEffect(() => {
+        fetchFilteredData();
+    }, []);
+
+    const handleCancel = async (id) => {
+        const appointmentUrl = `http://localhost:8080/api/appointments/${id}/cancel`;
+        const fetchConfig = {
+            method: "PUT",
+        };
+        const response = await fetch(appointmentUrl, fetchConfig);
+        if (response.ok) {
+            fetchFilteredData();
+        }
+    }
+
+    const handleFinish = async (id) => {
+        const appointmentUrl = `http://localhost:8080/api/appointments/${id}/finish`;
+        const fetchConfig = {
+            method: "PUT",
+        };
+        const response = await fetch(appointmentUrl, fetchConfig);
+        if (response.ok) {
+            fetchFilteredData();
         }
     }
 
     return (
         <>
-            <h1>Service History</h1>
-            <div className="input-group rounded">
-                <input value={searchVIN} onChange={event => setSearchVIN(event.target.value)} type="search" className="form-control rounded" placeholder="Search by VIN" aria-label="Search" aria-describedby="search-addon" />
-                <button onClick={() => handleVINSearch(searchVIN)} type="button" className="btn btn-outline-secondary">Search</button>
-            </div>
+            <h1>Service Appointments</h1>
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -50,7 +67,7 @@ function ServiceHistoryList() {
                         <th>Time</th>
                         <th>Technician</th>
                         <th>Reason</th>
-                        <th>Status</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,7 +84,10 @@ function ServiceHistoryList() {
                                 <td>{time}</td>
                                 <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
                                 <td>{appointment.reason}</td>
-                                <td>{appointment.status}</td>
+                                <td>
+                                    <button onClick={() => handleCancel(appointment.id)} type="button" className="btn btn-danger">Cancel</button>
+                                    <button onClick={() => handleFinish(appointment.id)} type="button" className="btn btn-success">Finish</button>
+                                </td>
                             </tr>
                         );
                     })}
@@ -77,4 +97,4 @@ function ServiceHistoryList() {
     );
 }
 
-export default ServiceHistoryList;
+export default ServiceAppointmentList;

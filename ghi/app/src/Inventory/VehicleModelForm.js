@@ -41,7 +41,6 @@ function VehicleModelForm() {
         const response = await fetch(vehicleModelUrl, fetchConfig);
         if (response.ok) {
             const newModel = await response.json();
-            console.log(newModel);
 
             setManufacturer("");
             setModelName("");
