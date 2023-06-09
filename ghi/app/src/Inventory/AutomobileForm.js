@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AutomobileForm () {
     const [color, setColor] = useState("");
@@ -6,6 +7,7 @@ function AutomobileForm () {
     const [vin, setVin] = useState("");
     const [model, setModel] = useState("");
     const [models, setModels] = useState([]);
+    const navigate = useNavigate();
 
     const fetchData = async() => {
         const response = await fetch("http://localhost:8100/api/models/");
@@ -46,6 +48,10 @@ function AutomobileForm () {
             setYear("");
             setVin("");
             setModel("");
+
+            alert("Automobile created successfully!");
+
+            navigate("/inventory/automobiles");
         }
     }
 

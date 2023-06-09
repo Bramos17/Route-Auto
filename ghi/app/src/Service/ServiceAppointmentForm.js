@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ServiceAppointmentForm() {
     const [vin, setVin] = useState("");
@@ -7,6 +8,7 @@ function ServiceAppointmentForm() {
     const [time, setTime] = useState("");
     const [technician, setTechnician] = useState("");
     const [reason, setReason] = useState("");
+    const navigate = useNavigate();
 
     const [technicians, setTechnicians] = useState([]);
     const fetchData = async() => {
@@ -50,6 +52,10 @@ function ServiceAppointmentForm() {
             setTime("");
             setTechnician("");
             setReason("");
+
+            alert("Appointment created successfully!");
+
+            navigate("/services/history");
         }
     }
 

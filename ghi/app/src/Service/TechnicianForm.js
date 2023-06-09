@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function TechnicianForm() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [employeeId, setEmployeeId] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -30,6 +32,10 @@ function TechnicianForm() {
             setFirstName("");
             setLastName("");
             setEmployeeId("");
+
+            alert("Technician created successfully!");
+
+            navigate("/services/technicians");
         }
     }
 
