@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function VehicleModelForm() {
     const [modelName, setModelName] = useState("");
     const [pictureUrl, setPictureUrl] = useState("");
     const [manufacturer, setManufacturer] = useState("");
+    const navigate = useNavigate();
 
     const [manufacturers, setManufacturers] = useState([]);
 
@@ -45,6 +47,10 @@ function VehicleModelForm() {
             setManufacturer("");
             setModelName("");
             setPictureUrl("");
+
+            alert("Vehicle model created successfully!");
+
+            navigate("/inventory/VehicleModelsList");
         }
     }
 
