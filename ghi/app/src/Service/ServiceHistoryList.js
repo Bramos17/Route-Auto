@@ -24,7 +24,7 @@ function ServiceHistoryList() {
 
         if (response.ok) {
             const data = await response.json();
-            const filteredData = data.appointments.filter(object => object["vin"] === vin);
+            const filteredData = data.appointments.filter(object => object.vin.includes(searchVIN));
             setAppointments(filteredData);
         }
     }
