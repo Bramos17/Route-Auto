@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function ServiceAppointmentList() {
     const [appointments, setAppointments] = useState([]);
@@ -82,7 +83,12 @@ function ServiceAppointmentList() {
                                 <td>{appointment.customer}</td>
                                 <td>{date}</td>
                                 <td>{time}</td>
-                                <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
+                                <td>
+                                    {appointment.technician.first_name} {appointment.technician.last_name}
+                                    <p>
+                                        <Link to={`services/technician/change/${appointment.id}`} className="btn btn-warning btn-sm">Change</Link>
+                                    </p>
+                                </td>
                                 <td>{appointment.reason}</td>
                                 <td>
                                     <button onClick={() => handleCancel(appointment.id)} type="button" className="btn btn-danger">Cancel</button>

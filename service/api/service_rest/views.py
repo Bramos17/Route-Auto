@@ -101,7 +101,7 @@ def api_list_appointment(request):
             )
 
 
-@require_http_methods(["GET", "DELETE"])
+@require_http_methods(["GET", "DELETE", "PUT"])
 def api_show_appointment(request, id):
     if request.method == "GET":
         try:
@@ -116,11 +116,30 @@ def api_show_appointment(request, id):
                 {'message': 'Invalid appointment id'},
                 status=400,
             )
-    else:
+    elif request.method == "DELETE":
         count, _ = Appointment.objects.filter(id=id).delete()
         return JsonResponse(
             {'deleted': count > 0},
             status=200,
+        )
+    else:
+        content = json.loads(request.body)
+        try:
+            if "technician" in content:
+                content["technician"] = Technician.objects.get(
+                    id=content["technician"]
+                )
+        except Technician.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid technician id"},
+                status=400,
+            )
+        Appointment.objects.filter(id=id).update(**content)
+        appointment = Appointment.objects.get(id=id)
+        return JsonResponse(
+            appointment,
+            encoder=AppointmentDetailEncoder,
+            safe=False,
         )
 
 

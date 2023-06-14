@@ -18,7 +18,7 @@ function Nav() {
                 <NavLink className="dropdown-item" to="sales/SalesPersonList">Sales Staff</NavLink>
                 <div className="dropdown-divider"></div>Froms
                 <NavLink className="dropdown-item" to="sales/CustomerForm">New Customer</NavLink>
-                <NavLink className="dropdown-item" to="sales/CustomerList">Coustomer List</NavLink>
+                <NavLink className="dropdown-item" to="sales/CustomerList">Customer List</NavLink>
                 <NavLink className="dropdown-item" to="sales/salesPerson/new"> New Sales Employee</NavLink>
                 <NavLink className="dropdown-item" to="Sales/SalesForm"> New Sale</NavLink>
               </div>
