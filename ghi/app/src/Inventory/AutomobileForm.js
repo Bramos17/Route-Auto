@@ -79,7 +79,7 @@ function AutomobileForm () {
                                 })}
                             </select>
                         </div>
-                        <button className="btn btn-primary">Create</button>
+                        <button className="btn btn-primary"id="autoCreateBtn">Create</button>
                     </form>
                 </div>
             </div>

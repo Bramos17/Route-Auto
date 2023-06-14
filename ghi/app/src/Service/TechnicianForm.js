@@ -51,7 +51,7 @@ function TechnicianForm() {
                             <input value={employeeId} onChange={event => setEmployeeId(event.target.value)} placeholder="Employee Id" required type="text" id="employee_id" className="form-control" name="employee_id" />
                             <label htmlFor="employee_id">Employee ID</label>
                         </div>
-                        <button className="btn btn-primary">Create</button>
+                        <button className="btn btn-primary"id="techBtn">Create</button>
                     </form>
                 </div>
             </div>

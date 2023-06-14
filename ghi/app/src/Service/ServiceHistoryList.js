@@ -42,7 +42,7 @@ function ServiceHistoryList() {
                 <input value={searchVIN} onChange={event => setSearchVIN(event.target.value)} onKeyDown={handleKeyDown} type="text" className="form-control rounded" placeholder="Search by VIN" aria-label="Search" aria-describedby="search-addon" />
                 <button onClick={() => handleVINSearch(searchVIN)} type="button" className="btn btn-outline-secondary">Search</button>
             </div>
-            <table className="table table-striped">
+            <table className="table table">
                 <thead>
                     <tr>
                         <th>VIN</th>

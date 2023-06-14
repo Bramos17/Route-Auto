@@ -74,7 +74,7 @@ function CustomerForm(props) {
                             <input onChange={handleFormChange} placeholder="PhoneNumber" required type="text" name="phone_number" id="phone_number" className="form-control" />
                             <label htmlFor="phone_number">Phone</label>
                         </div>
-                        <button className="btn btn-primary">Create</button>
+                        <button className="btn btn-primary"id="customerBtn">Create</button>
                     </form>
                 </div>
             </div>

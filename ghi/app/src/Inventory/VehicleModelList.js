@@ -19,8 +19,8 @@ function ModelsList() {
 
 
     return (
-        <div className="container mt-2">
-            <h1 style={{ marginTop: "20px" }}>Models</h1>
+        <div className="px-4 py-5 my-5 mt-0 text-center" id="vehicles">
+            <h1 className="display-5 fw-bold">Vehicle Models</h1>
             <table className="table">
                 <thead>
                     <tr>

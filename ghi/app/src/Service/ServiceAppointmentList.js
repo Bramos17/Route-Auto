@@ -56,8 +56,8 @@ function ServiceAppointmentList() {
 
     return (
         <>
-            <h1>Service Appointments</h1>
-            <table className="table table-striped">
+            <h1 id="appHeader">Service Appointments</h1>
+            <table className="table table">
                 <thead>
                     <tr>
                         <th>VIN</th>
@@ -85,8 +85,8 @@ function ServiceAppointmentList() {
                                 <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
                                 <td>{appointment.reason}</td>
                                 <td>
-                                    <button onClick={() => handleCancel(appointment.id)} type="button" className="btn btn-danger">Cancel</button>
-                                    <button onClick={() => handleFinish(appointment.id)} type="button" className="btn btn-success">Finish</button>
+                                    <button onClick={() => handleCancel(appointment.id)} type="button" className="btn btn-danger"id="cancel">Cancel</button>
+                                    <button onClick={() => handleFinish(appointment.id)} type="button" className="btn btn-success"id="finished">Finish</button>
                                 </td>
                             </tr>
                         );

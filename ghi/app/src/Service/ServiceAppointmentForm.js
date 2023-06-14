@@ -57,7 +57,7 @@ function ServiceAppointmentForm() {
         <div className="row">
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
-                    <h1>Create A Service Appointment</h1>
+                <h1 id="appHeader">Create a new Appointment</h1>
                     <form onSubmit={handleSubmit} id="create-appointment-form">
                         <div className="form-floating mb-3">
                             <input value={vin} onChange={event => setVin(event.target.value)} placeholder="Automobile VIN" required type="text" id="vin" className="form-control" name="vin" />
@@ -91,7 +91,7 @@ function ServiceAppointmentForm() {
                             <textarea value={reason} onChange={event => setReason(event.target.value)} required type="text" id="reason" className="form-control" name="reason"></textarea>
                             <label htmlFor="reason" className="form-label">Reason</label>
                         </div>
-                        <button className="btn btn-primary">Create</button>
+                        <button className="btn btn-primary"id="appBtn">Create</button>
                     </form>
                 </div>
             </div>

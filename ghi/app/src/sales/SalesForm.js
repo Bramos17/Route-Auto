@@ -140,7 +140,7 @@ const SalesForm = (props) => {
                                 <label htmlFor="price">Price</label>
                             </div>
 
-                            <button className="btn btn-primary">Create</button>
+                            <button className="btn btn-primary"id="newSaleBtn">Create</button>
                         </form>
                     </div>
                 </div>

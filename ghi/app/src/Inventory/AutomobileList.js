@@ -18,7 +18,7 @@ function AutomobileList () {
     return (
         <>
         <h1>Automobiles</h1>
-        <table className="table table-striped">
+        <table className="table table">
             <thead>
                 <tr>
                     <th>VIN</th>

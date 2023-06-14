@@ -47,7 +47,7 @@ function EmployeeForm(props) {
                     <h1>Employee sign up!</h1>
                     <h5>Welcome!</h5>
                     <h5> Please fill out the Following </h5>
-                    <form onSubmit={handleSubmit} id="create-location-form">
+                    <form onSubmit={handleSubmit} id="create-salesperson-form">
                         <div className="form-floating mb-3">
                             <input onChange={handleFormChange} placeholder="First Name" required type="text" name="first_name" id="first_name" className="form-control" />
                             <label htmlFor="first_name">FirstName</label>
@@ -60,7 +60,7 @@ function EmployeeForm(props) {
                             <input onChange={handleFormChange} placeholder="employee_id" required type="text" name="employee_id" id="employee_id" className="form-control" />
                             <label htmlFor="employee_id">Employee ID</label>
                         </div>
-                        <button className="btn btn-primary">Create</button>
+                        <button className="btn btn-primary"id="salesPersBtn">Create</button>
                     </form>
                 </div>
             </div>
