@@ -13,7 +13,7 @@ class AutomobileVO(models.Model):
 class Technician(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
-    employee_id = models.PositiveBigIntegerField()
+    employee_id = models.PositiveBigIntegerField(unique=True)
 
     def get_api_url(self):
         return reverse('api_show_technician', kwargs={'id': self.id})
