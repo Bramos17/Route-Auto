@@ -86,7 +86,7 @@ function ServiceAppointmentList() {
                                 <td>
                                     {appointment.technician.first_name} {appointment.technician.last_name}
                                     <p>
-                                        <Link to={`services/technician/change/${appointment.id}`} className="btn btn-warning btn-sm">Change</Link>
+                                        <Link to={`/services/technician/change/${appointment.id}`} className="btn btn-warning btn-sm">Change</Link>
                                     </p>
                                 </td>
                                 <td>{appointment.reason}</td>

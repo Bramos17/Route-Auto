@@ -26,6 +26,7 @@ import ServiceAppointmentForm from './Service/ServiceAppointmentForm';
 import ServiceAppointmentList from './Service/ServiceAppointmentList';
 import ServiceHistoryList from './Service/ServiceHistoryList';
 import TechnicianChangeForm from './Service/TechnicianChangeForm';
+import SearchResultList from './Service/SearchResultList';
 
 function App() {
   return (
@@ -52,7 +53,7 @@ function App() {
             <Route path="appointments" element={<ServiceAppointmentList />}></Route>
             <Route path="appointment/new" element={<ServiceAppointmentForm />}></Route>
             <Route path="history" element={<ServiceHistoryList />}></Route>
-            <Route path="appointments/services/technician/change/:id" element={<TechnicianChangeForm />}></Route>
+            <Route path="technician/change/:id" element={<TechnicianChangeForm />}></Route>
           </Route>
 
           <Route path="inventory">
@@ -60,6 +61,10 @@ function App() {
             <Route path="vehicle-model/new" element={<VehicleModelForm />}></Route>
             <Route path="automobiles" element={<AutomobileList />}></Route>
             <Route path="automobile/new" element={<AutomobileForm />}></Route>
+          </Route>
+
+          <Route path="search">
+            <Route path="list/:term" element={<SearchResultList />}></Route>
           </Route>
         </Routes>
       </div>

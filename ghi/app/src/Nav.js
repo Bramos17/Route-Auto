@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import SearchBar from "./Service/SearchBar";
 
 function Nav() {
   return (
@@ -49,10 +50,7 @@ function Nav() {
             </li>
           </ul>
         </div>
-        <form className="d-flex" role="search">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button className="btn btn-outline-light" type="submit">Search</button>
-        </form>
+        <SearchBar />
       </div>
     </nav>
   );
