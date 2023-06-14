@@ -33,7 +33,7 @@ function CustomerForm(props) {
                 email: '',
                 phone_number: '',
             });
-            alert('Customer created successfully');
+            window.location = '.sales/CustomerList.js';
         }
     }
 
@@ -72,7 +72,7 @@ function CustomerForm(props) {
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={handleFormChange} placeholder="PhoneNumber" required type="text" name="phone_number" id="phone_number" className="form-control" />
-                            <label htmlFor="phone_number">Phone number</label>
+                            <label htmlFor="phone_number">Phone</label>
                         </div>
                         <button className="btn btn-primary">Create</button>
                     </form>

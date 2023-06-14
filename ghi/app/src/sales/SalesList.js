@@ -18,7 +18,7 @@ function SaleList() {
     return (
         <div className="container">
             <h1 className="text-center">Sales</h1>
-            <table className="table table-striped">
+            <table className="table">
                 <thead>
                     <tr>
                         <th className="text-center">Automobile</th>

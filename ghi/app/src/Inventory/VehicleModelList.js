@@ -21,7 +21,7 @@ function ModelsList() {
     return (
         <div className="container mt-2">
             <h1 style={{ marginTop: "20px" }}>Models</h1>
-            <table className="table table-striped">
+            <table className="table">
                 <thead>
                     <tr>
                         <th>Model</th>

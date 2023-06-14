@@ -14,11 +14,18 @@ function CustomerList() {
     };
 
     useEffect(() => { fetchCustomerData(); }, []);
+    const handleDeleteCustomer = async (id) => {
+        const Url = `http://localhost:8090/api/customers/${id}`;
+        const response = await fetch(Url, { method: "DELETE" });
+        if (response.ok) {
+            window.location.reload();
+        }
+    };
 
     return (
         <div className="container">
             <h1 className="text-center">Customers</h1>
-            <table className="table table-striped">
+            <table className="table">
                 <thead>
                     <tr>
                         <th className="text-center">First Name</th>
@@ -35,7 +42,9 @@ function CustomerList() {
                                 <td className="text-center">{customer.last_name}</td>
                                 <td className="text-center">{customer.phone_number}</td>
                                 <td className="text-center">
-                                    <Link to={`/customers/edit/${customer.id}/`} relative="path">Edit</Link>
+                                    <Link to={`/customers/edit/${customer.id}/`} relative="path">Edit</Link></td>
+                                <td className="text-center">
+                                    <button onClick={() => handleDeleteCustomer(customer.id)} className="btn btn-danger">Delete</button>
                                 </td>
                             </tr>
                         );

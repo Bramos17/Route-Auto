@@ -83,13 +83,14 @@ def api_list_customers(request):
 
 
 @require_http_methods(['DELETE'])
-def api_customer_details(request, phone_number):
-    try:
-        customer = SalesCustomer.objects.get(phone_number=phone_number)
-        customer.delete()
-        return JsonResponse({'message': 'Customer deleted successfully'})
-    except SalesCustomer.DoesNotExist:
-        return JsonResponse({'error': 'Customer not found'}, status=404)
+def api_customer_details(request, id):
+    if request.method == "DELETE":
+        try:
+            customer = SalesCustomer.objects.get(id=id)
+            customer.delete()
+            return JsonResponse({'message': 'Customer deleted successfully'})
+        except SalesCustomer.DoesNotExist:
+            return JsonResponse({'error': 'Customer not found'}, status=404)
 
 
 @require_http_methods(["GET", "POST"])

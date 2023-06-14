@@ -16,12 +16,18 @@ function SalespersonList() {
     };
 
     useEffect(() => { fetchSalespersonData(); }, []);
-
+    const handleDeleteSalesPerson = async (id) => {
+        const Url = `http://localhost:8090/api/salespeople/${id}`;
+        const response = await fetch(Url, { method: "DELETE" });
+        if (response.ok) {
+            window.location.reload();
+        }
+    };
 
     return (
         <div className="container">
             <h1 className="text-center">Salespeople</h1>
-            <table className="table table-striped">
+            <table className="table"id= "SalespersonList">
                 <thead>
                     <tr>
                         <th className="text-center">First Name</th>
@@ -41,6 +47,9 @@ function SalespersonList() {
                                     <Link to={`/salespeople/edit/${person.id}/`} relative="path">
                                         Edit
                                     </Link>
+                                </td>
+                                <td className="text-center">
+                                    <button onClick={() => handleDeleteSalesPerson(person.id)} className="btn btn-danger">Delete</button>
                                 </td>
                             </tr>
                         );

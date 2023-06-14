@@ -17,7 +17,7 @@ const ManufacturerList = (props) => {
     return (
         <div className="container mt-2">
             <h1>Manufacturers</h1>
-            <table className="table table-striped">
+            <table className="table">
                 <thead>
                     <tr>
                         <th>Name</th>
