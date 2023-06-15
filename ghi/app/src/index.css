@@ -38,7 +38,7 @@ h1 {
 }
 h5 {
   font-family: 'Racing Sans One', cursive;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   font-size: 150%;
   color: #D1CDC2;
 }
@@ -104,6 +104,7 @@ label {
 #name {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.1);
+  text-decoration-color: aliceblue;
 }
 
 #createBtn {
@@ -135,21 +136,25 @@ label {
 #color {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #year {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #vin {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #model {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #autoCreateBtn {
@@ -169,11 +174,13 @@ label {
 #picture_url {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #manufacturer_id {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #vehicleModelBtn {
@@ -207,6 +214,7 @@ label {
 #id {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #salesPersBtn {
@@ -225,50 +233,60 @@ label {
 #first_name {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #last_name {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #email {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #phone_number {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #address {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #phone {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 #employee_id {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 
 }
 
 #technician {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0,0.2);
+  text-decoration-color: aliceblue;
 }
 
 #salesperson {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0);
+  text-decoration-color: aliceblue;
 }
 #model_id {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0,0.2);
+  text-decoration-color: aliceblue;
 }
 
 #customerBtn {
@@ -293,16 +311,19 @@ label {
 #sales_person {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #customer {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #price {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #newSaleBtn {
@@ -339,6 +360,7 @@ label {
 #tech {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #owner {
@@ -349,16 +371,19 @@ label {
 #reason {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #date {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #time {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
 }
 
 #vip {
@@ -409,6 +434,17 @@ label {
   color: silver;
 }
 
+#Usernameinput {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
+  text-decoration-color: aliceblue;
+}
+
+#Passwordinput {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0,0.2);
+  text-decoration-color: aliceblue;
+}
 .shadow {
   background: #04588C;
 }

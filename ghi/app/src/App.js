@@ -1,5 +1,7 @@
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Nav from './Nav';
+import Login from './Accounts/login';
 import MainPage from './MainPage';
 import {
   SalesForm, SalesList, SalesPersonList, SalesPersonHistory, CustomerForm, CustomerList, EmployeeForm, ManufacturerList
@@ -9,6 +11,11 @@ import {
 
 
 function App() {
+    const [token, setToken] = useState();
+
+    if(!token) {
+      return <Login setToken={setToken} />
+    }
   return (
     <BrowserRouter>
       <Nav />
