@@ -23,6 +23,7 @@ const ManufacturerForm = (props) => {
         if (response.ok) {
             setFormData({ name: "" });
         }
+        window.location.href = '/manufacturer/Manufacturers';
     };
 
 

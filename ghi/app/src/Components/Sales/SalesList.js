@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import pricetag from '../images/pricetag.png';
 
 function SaleList() {
     const [sales, setSales] = useState([]);
@@ -44,6 +45,8 @@ function SaleList() {
                     })}
                 </tbody>
             </table>
+            <a href="http://localhost:3000/Sales/SalesForm" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={pricetag} alt="pricetag"/> Add New Sale
+            </a>
         </div>
     );
 }

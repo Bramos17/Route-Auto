@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import person from '../images/person.png';
 
 function SalespersonList() {
     const [salespeople, setSalespeople] = useState([]);
@@ -56,6 +57,8 @@ function SalespersonList() {
                     })}
                 </tbody>
             </table>
+            <a href="http://localhost:3000/sales/salesPerson/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={person} alt="person"/> Add New Sales Person
+            </a>
         </div>
     );
 }

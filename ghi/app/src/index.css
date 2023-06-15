@@ -324,7 +324,18 @@ label {
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
 }
+#addnewauto {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #D1CDC2;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 2px;
+}
 
+#addnewauto:hover {
+  background: rgba(0, 0, 0, 0.7);
+  color: silver;
+}
 #tech {
   background: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);

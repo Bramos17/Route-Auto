@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import steeringwheel from '../images/steeringwheel.png';
 
 const ManufacturerList = (props) => {
     const [manufacturers, setManufacturers] = useState([]);
@@ -33,6 +34,8 @@ const ManufacturerList = (props) => {
                     })}
                 </tbody>
             </table>
+            <a href="http://localhost:3000/Manufacturer/manufacturers/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={steeringwheel} alt="Steering"/> Add New Manufacturer
+            </a>
         </div>
     );
 };

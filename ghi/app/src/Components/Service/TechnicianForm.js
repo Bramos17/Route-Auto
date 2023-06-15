@@ -31,6 +31,7 @@ function TechnicianForm() {
             setLastName("");
             setEmployeeId("");
         }
+        window.location.href = "/services/technicians";
     }
 
     return (

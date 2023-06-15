@@ -56,6 +56,7 @@ const SalesForm = (props) => {
                 price: ""
             });
             alert('Customer created successfully');
+            window.location.href = '/sales/SalesList';
         }
     };
 
@@ -75,14 +76,15 @@ const SalesForm = (props) => {
                                     id="automobile"
                                     name="automobile"
                                 >
-                                    <option value="">Choose an automobile Vin</option>
-                                    {automobiles.map(automobile => {
-                                        return (
-                                            <option key={automobile.vin} value={automobile.vin}>{automobile.vin}</option>
-                                        )
-                                    })}
-
+                                    <option value="">Select an automobile</option>
+                                    {automobiles.filter((auto) => !auto.sold)
+                                        .map((auto) => (
+                                            <option key={auto["vin"]} value={auto["vin"]}>
+                                                {auto["year"]} {auto["model"]["manufacturer"]["name"]} {auto["model"]["name"]} - {auto["vin"]}
+                                            </option>
+                                        ))}
                                 </select>
+
                             </div>
 
                             <div className="mb-3">
@@ -140,7 +142,7 @@ const SalesForm = (props) => {
                                 <label htmlFor="price">Price</label>
                             </div>
 
-                            <button className="btn btn-primary"id="newSaleBtn">Create</button>
+                            <button className="btn btn-primary" id="newSaleBtn">Create</button>
                         </form>
                     </div>
                 </div>

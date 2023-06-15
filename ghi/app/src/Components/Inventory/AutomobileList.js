@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import steeringwheel from '../images/steeringwheel.png'
 
 function AutomobileList () {
     const [automobiles, setAutomobiles] = useState([]);
@@ -30,20 +31,23 @@ function AutomobileList () {
                 </tr>
             </thead>
             <tbody>
-                {automobiles.map(auto => {
-                    return (
-                        <tr key={auto.id}>
-                            <td>{auto.vin}</td>
-                            <td>{auto.color}</td>
-                            <td>{auto.year}</td>
-                            <td>{auto.model.name}</td>
-                            <td>{auto.model.manufacturer.name}</td>
-                            <td>{auto.sold ? "Yes" : "No"}</td>
-                        </tr>
-                    );
-                })}
+            {automobiles.map((automobile) => {
+                const soldStyle = automobile.sold ? {color: "red" } : {color: "limegreen" };
+                return (
+                    <tr key={automobile.id}>
+                        <td>{automobile.vin}</td>
+                        <td>{automobile.color}</td>
+                        <td>{automobile.year}</td>
+                        <td>{automobile.model.name}</td>
+                        <td>{automobile.model.manufacturer.name}</td>
+                        <td style={soldStyle}>{automobile.sold ? "Sold" : "in stock"}</td>
+                    </tr>
+                );
+            })}
             </tbody>
         </table>
+            <a href="http://localhost:3000/inventory/automobile/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={steeringwheel} alt="Steering"/> Add New Automobile
+            </a>
         </>
     );
 }

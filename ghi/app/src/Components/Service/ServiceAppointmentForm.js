@@ -51,6 +51,7 @@ function ServiceAppointmentForm() {
             setTechnician("");
             setReason("");
         }
+        window.location.href = "/services/appointments";
     }
 
     return (

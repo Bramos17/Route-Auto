@@ -1,4 +1,5 @@
 import './index.css';
+import carlogo from './Components/images/carlogo.png';
 
 function MainPage() {
   return (
@@ -11,13 +12,19 @@ function MainPage() {
         <div id="carouselSlides" className="carousel slide" data-bs-ride="carousel">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img src={'carlogo.png'}className="d-block w-100" alt="slide1" />
+              <img src={carlogo}className="d-block w-100" alt="slide1" />
             </div>
             <div className="carousel-item">
               <img src="https://www.motortrend.com/uploads/sites/5/2021/07/2022_Bentley_Bentayga_Hybrid-02.jpg?fit=around%7C719.5999999999999:449.74999999999994f" className="d-block w-100" alt="slide2" />
             </div>
             <div className="carousel-item">
               <img src="https://assets.rebelmouse.io/media-library/image.jpg?id=31793174&width=1200&height=800&quality=90&coordinates=62%2C0%2C62%2C0" className="d-block w-100" alt="slide3" />
+            </div>
+            <div className="carousel-item">
+              <img src="https://www.motoringresearch.com/wp-content/uploads/2015/08/01_Aston_Martin_DB9_GT_2015.jpg" className="d-block w-100" alt="slide4" />
+            </div>
+            <div className="carousel-item">
+              <img src="https://www.hdcarwallpapers.com/walls/mercedes_benz_g_63_amg-HD.jpg" className="d-block w-100" alt="slide5" />
             </div>
           </div>
         </div></div>

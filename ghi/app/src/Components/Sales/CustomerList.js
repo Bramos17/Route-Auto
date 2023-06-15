@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import person from '../images/person.png';
 
 function CustomerList() {
     const [customers, setCustomers] = useState([]);
@@ -51,6 +52,8 @@ function CustomerList() {
                     })}
                 </tbody>
             </table>
+            <a href="http://localhost:3000/sales/CustomerForm" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={person} alt="person"/> Add New Customer
+            </a>
         </div>
     );
 }

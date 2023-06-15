@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import calendar from '../images/calendar.png';
 
 function ServiceAppointmentList() {
     const [appointments, setAppointments] = useState([]);
@@ -93,6 +94,8 @@ function ServiceAppointmentList() {
                     })}
                 </tbody>
             </table>
+            <a href="http://localhost:3000/inventory/automobile/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={calendar} alt="calendar"/> Add New Appointment
+            </a>
         </>
     );
 }

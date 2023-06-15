@@ -40,12 +40,12 @@ function VehicleModelForm() {
 
         const response = await fetch(vehicleModelUrl, fetchConfig);
         if (response.ok) {
-            const newModel = await response.json();
 
             setManufacturer("");
             setModelName("");
             setPictureUrl("");
         }
+        window.location.href = "/Vehicle/VehicleModels/new";
     }
 
     return (

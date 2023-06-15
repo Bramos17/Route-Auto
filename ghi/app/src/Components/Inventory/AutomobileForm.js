@@ -47,6 +47,7 @@ function AutomobileForm () {
             setVin("");
             setModel("");
         }
+        window.location.href = "/inventory/automobiles";
     }
 
     return (

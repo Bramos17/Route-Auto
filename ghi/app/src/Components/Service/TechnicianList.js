@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import wrench from '../images/wrench.png';
 
 function TechnicianList() {
     const [technicians, setTechnicians] = useState([]);
@@ -39,7 +40,9 @@ function TechnicianList() {
                     );
                 })}
             </tbody>
-        </table>
+            </table>
+            <a href="http://localhost:3000/services/technician/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={wrench} alt="wrench"/> Add New Technician
+            </a>
         </>
     );
 }
