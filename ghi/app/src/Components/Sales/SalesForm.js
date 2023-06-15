@@ -55,8 +55,7 @@ const SalesForm = (props) => {
                 customer: "",
                 price: ""
             });
-            alert('Customer created successfully');
-            window.location.href = '/sales/SalesList';
+            window.location.href = '/sales';
         }
     };
 

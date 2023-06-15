@@ -45,7 +45,7 @@ function SaleList() {
                     })}
                 </tbody>
             </table>
-            <a href="http://localhost:3000/Sales/SalesForm" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={pricetag} alt="pricetag"/> Add New Sale
+            <a href="http://localhost:3000/Sales/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={pricetag} alt="pricetag" /> Add New Sale
             </a>
         </div>
     );

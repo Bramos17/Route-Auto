@@ -94,7 +94,7 @@ function ServiceAppointmentList() {
                     })}
                 </tbody>
             </table>
-            <a href="http://localhost:3000/inventory/automobile/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={calendar} alt="calendar"/> Add New Appointment
+            <a href="http://localhost:3000/appointments/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={calendar} alt="calendar"/> Add New Appointment
             </a>
         </>
     );

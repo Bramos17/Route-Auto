@@ -52,7 +52,7 @@ function CustomerList() {
                     })}
                 </tbody>
             </table>
-            <a href="http://localhost:3000/sales/CustomerForm" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={person} alt="person"/> Add New Customer
+            <a href="http://localhost:3000/customers/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={person} alt="person"/> Add New Customer
             </a>
         </div>
     );

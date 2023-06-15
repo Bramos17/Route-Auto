@@ -41,7 +41,7 @@ function ModelsList() {
                     })}
                 </tbody>
             </table>
-            <a href="http://localhost:3000/inventory/vehicle-model/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={steeringwheel} alt="Steering"/> Add New Model
+            <a href="http://localhost:3000/vehicleModels/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={steeringwheel} alt="Steering"/> Add New Model
             </a>
         </div>
     );

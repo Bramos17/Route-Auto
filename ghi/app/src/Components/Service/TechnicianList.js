@@ -41,7 +41,7 @@ function TechnicianList() {
                 })}
             </tbody>
             </table>
-            <a href="http://localhost:3000/services/technician/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={wrench} alt="wrench"/> Add New Technician
+            <a href="http://localhost:3000/technicians/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={wrench} alt="wrench"/> Add New Technician
             </a>
         </>
     );

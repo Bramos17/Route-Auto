@@ -34,7 +34,7 @@ const ManufacturerList = (props) => {
                     })}
                 </tbody>
             </table>
-            <a href="http://localhost:3000/Manufacturer/manufacturers/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={steeringwheel} alt="Steering"/> Add New Manufacturer
+            <a href="http://localhost:3000/manufacturers/new" role="button" id="addnewauto"> <img id="stearingwheel" width="40px" height="auto" src={steeringwheel} alt="Steering"/> Add New Manufacturer
             </a>
         </div>
     );
