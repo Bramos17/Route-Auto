@@ -92,7 +92,7 @@ function ServiceAppointmentList() {
                                 <td>{appointment.reason}</td>
                                 <td>
                                     <button onClick={() => handleCancel(appointment.id)} type="button" className="btn btn-danger">Cancel</button>
-                                    <button onClick={() => handleFinish(appointment.id)} type="button" className="btn btn-success">Finish</button>
+                                    <button onClick={() => handleFinish(appointment.id)} type="button" className="btn btn-success">Completed</button>
                                 </td>
                             </tr>
                         );
