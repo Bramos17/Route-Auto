@@ -37,7 +37,6 @@ function TechnicianChangeForm() {
         const response = await fetch(appointmentUrl, fetchConfig);
         if (response.ok) {
             const newTechnician = await response.json();
-            console.log(newTechnician);
 
             setTechnician("");
 
